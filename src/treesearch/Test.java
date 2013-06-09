@@ -4,6 +4,8 @@
  */
 package treesearch;
 
+import java.util.Scanner;
+
 /**
  *
  * @author 12101145
@@ -14,7 +16,6 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         
         Node Tree = new Node(null, 5, 4);
         Node firstChild = new Node(Tree, 2, 2);
@@ -45,15 +46,34 @@ public class Test {
         thirdChild.appendChildNode(third2Child);
         thirdChild.appendChildNode(third3Child);
         
-        TreeSearch t = new TreeSearch(Tree, 34);
+        Scanner k = new Scanner(System.in);
+        boolean count = true;
         
-        if (t.search(Tree)){
+        while(count){
             
-            System.out.println("Value was found");
+            System.out.println("Please enter the number you want to search.");
+            int key = k.nextInt();
+
+            TreeSearch t = new TreeSearch(Tree, key);
+
+            System.out.println("Searching for " + key + " in the tree...");
+            if (t.search(Tree)){
+
+                System.out.println(key + " was found!");
+
+            }else{
+
+                System.out.println(key + " was not found!");
+
+            }
             
-        }else{
+            System.out.println("Continue Searching? Input -1 to exit.");
+            key = k.nextInt();
             
-            System.out.println("Value was not found");
+            if (key == -1)
+                count = false;
+            else
+                count = true;
             
         }
         

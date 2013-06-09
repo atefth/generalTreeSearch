@@ -83,25 +83,25 @@ public class TreeSearch {
         
        init(n);
        
-       if (n.getValue()==key){
+       if (check()){
            
            return true;
            
-       }else if(n.getChildren().length == 0){
+       }else if(currentChildNodeLength == 0){
            
            return false;
            
        }else{
            
-           return search(n.getChildren());
+           return search(currentNode.getChildren());
            
        }
         
     }
     
-    public boolean check(Node n){
+    public boolean check(){
         
-        if (key == n.getValue()){
+        if (key == currentNode.getValue()){
             
             return true;
             

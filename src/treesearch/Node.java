@@ -10,6 +10,16 @@ package treesearch;
  */
 public class Node {
     
+    //this node's parent node
+    private Node parent;
+    //this node's children nodes
+    private Node[] children;
+    //this node's total number of child nodes
+    private int totalNodes;
+    //this node's value
+    private int value;
+    
+    //creates a Node with no parent, value or children
     public Node(){
         
         this.parent = null;
@@ -19,6 +29,7 @@ public class Node {
         
     }
     
+    //creates a node with no parent or children but a value (val)
     public Node(int val){
         
         this.parent = null;
@@ -28,6 +39,7 @@ public class Node {
         
     }
     
+    //creates a node with a parent (pred), a value (val) and an array of child nodes (child)
     public Node(Node pred, int val, Node[] child){
         
         this.parent = pred;
@@ -37,6 +49,7 @@ public class Node {
         
     }
     
+    //creates a node with a parent (pred), value (val) and an empty number of child nodes (nodeNo)
     public Node(Node pred, int val, int nodeNo){
         
         this.parent = pred;
@@ -46,11 +59,7 @@ public class Node {
         
     }
     
-    private Node parent;
-    private Node[] children;
-    private int totalNodes;
-    private int value;
-    
+    //returns the index of the next child node to be inserted
     public int nextFreeChildNode(){
         
         for (int i = 0; i < totalNodes; i++){
@@ -66,6 +75,8 @@ public class Node {
         return -1;
     }
     
+    //returns true if a child node is appended to this node
+    //else returns false
     public boolean appendChildNode(Node n){
         
         if (this.totalNodes >0){
@@ -91,6 +102,7 @@ public class Node {
         
     }
     
+    //sets the child node of this node at index location to n
     public boolean setChildNodeAt(Node n, int location){
         
         if (totalNodes >0 && location >=0){
@@ -106,6 +118,7 @@ public class Node {
         
     }
     
+    //sets the value of this node
     public boolean setValue(int val){
         
         if (val >= 0){
@@ -121,24 +134,28 @@ public class Node {
         
     }
     
+    //returns the value of this node
     public int getValue(){
         
         return this.value;
         
     }
     
+    //returns the parent of this node
     public Node getParent(){
         
         return this.parent;
         
     }
     
+    //returns the children of this node
     public Node[] getChildren(){
         
         return this.children;
         
     }
     
+    //sets the parent of this node to pred
     public boolean setParent(Node pred){
         
         if (pred != null){
